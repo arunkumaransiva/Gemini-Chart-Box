@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gemini Chart Box</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>📊 Gemini Chart Box</h1>
+            <p>Generate and analyze charts with AI</p>
+        </div>
+        
+        <div class="card">
+            <div class="controls">
+                <div class="form-group">
+                    <label for="query">What data would you like to visualize?</label>
+                    <input 
+                        type="text" 
+                        id="query" 
+                        placeholder="e.g., Sales data for Q1 2025, or Monthly website traffic"
+                        value="Monthly sales for the last 6 months"
+                    >
+                </div>
+                
+                <div class="form-group">
+                    <label for="chartType">Chart Type</label>
+                    <select id="chartType">
+                        <option value="bar">Bar Chart</option>
+                        <option value="line">Line Chart</option>
+                        <option value="pie">Pie Chart</option>
+                        <option value="doughnut">Doughnut Chart</option>
+                    </select>
+                </div>
+                
+                <div class="form-group">
+                    <label for="sampleData">Quick Samples</label>
+                    <select id="sampleData" onchange="loadSampleData()">
+                        <option value="">-- Load Sample --</option>
+                        <option value="sales">Sales Data</option>
+                        <option value="traffic">Website Traffic</option>
+                        <option value="products">Product Sales</option>
+                        <option value="revenue">Revenue Distribution</option>
+                        <option value="growth">Quarterly Growth</option>
+                    </select>
+                </div>
+                
+                <button onclick="generateChart()">Generate Chart</button>
+            </div>
+            
+            <div id="errorMessage"></div>
+            
+            <div id="loading" class="loading" style="display:none;">
+                <div class="spinner"></div>
+                Generating chart with AI...
+            </div>
+            
+            <div id="chartSection" style="display:none;">
+                <div class="chart-container">
+                    <canvas id="myChart"></canvas>
+                </div>
+                
+                <div class="insights-box">
+                    <h3>💡 AI Insights</h3>
+                    <div id="insightsContent">
+                        <div class="spinner" style="width: 20px; height: 20px;"></div>
+                        <p>Analyzing chart data...</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <script src="script.js"></script>
+</body>
+</html>
